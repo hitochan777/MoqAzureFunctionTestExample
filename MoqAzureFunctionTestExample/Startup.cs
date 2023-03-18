@@ -10,7 +10,7 @@ namespace MyFunctions
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddSingleton((s) => new NonVirtualKlassWrapper(2));
+            builder.Services.AddSingleton((s) => new NumberGeneratorWrapper(2));
         }
     }
 }

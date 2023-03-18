@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -9,8 +8,8 @@ namespace MyFunctions;
 
 public class HelloWorld
 {
-    private readonly NonVirtualKlassWrapper _klass;
-    public HelloWorld(NonVirtualKlassWrapper klass)
+    private readonly NumberGeneratorWrapper _klass;
+    public HelloWorld(NumberGeneratorWrapper klass)
     {
         _klass = klass;
     }
@@ -19,7 +18,7 @@ public class HelloWorld
     public async Task<IActionResult> RunAsync(
         [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
     {
-        var num =    await _klass.GetNumber();
+        var num =    _klass.GetNumber();
         return new OkObjectResult($"Hello, {num}");
     }
 }
