@@ -10,20 +10,14 @@ namespace TestProject1;
 
 public class Tests
 {
-    [SetUp]
-    public void Setup()
-    {
-        
-    }
-
     [Test]
     public async Task Test1()
     { 
-        var mockKlass = new Mock<Klass>(MockBehavior.Strict);
+        var mockKlass = new Mock<NonVirtualKlassWrapper>(MockBehavior.Strict, 10);
         var task = async () =>
         {
             await Task.Delay(2000);
-            return 10;
+            return 20;
         };
         mockKlass.Setup(klass => klass.GetNumber()).Returns(task());
         var myFunction = new HelloWorld(mockKlass.Object);

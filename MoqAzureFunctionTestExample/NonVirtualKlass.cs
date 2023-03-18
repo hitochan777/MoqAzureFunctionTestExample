@@ -2,17 +2,16 @@ using System.Threading.Tasks;
 
 namespace MyFunctions;
 
-public class Klass
+public class NonVirtualKlass
 {
    private int Number { get; set; }
-   public Klass() {}
 
-   public Klass(int number)
+   public NonVirtualKlass(int number)
    {
       Number = number;
    }
    
-   public virtual async Task<int> GetNumber()
+   public async Task<int> GetNumber()
    {
       await Task.Delay(1000);
       return Number;
